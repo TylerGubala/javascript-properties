@@ -1,7 +1,8 @@
 (function(exports){
 
-    class Property{
-        constructor(value= null){
+    class Property extends Privatizors.Private{
+        constructor(value = null){
+            super();
             this._value = value;
             const Factory = new Events.Factory();
             this.addEventListeners = this.addListeners = this.on = Factory.addEventListeners;
