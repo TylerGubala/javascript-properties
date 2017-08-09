@@ -2,8 +2,28 @@
 
     class Property extends Privatizors.Private{
         constructor(value = null){
-            super();
-            this._value = value;
+            super(object={
+                _value: value
+            }, handler={
+                get: function(target, property, reciever){
+                    if(property === "Value"){
+                        return target._value
+                    }
+                    else{
+                        return target[property];
+                    }
+                },
+                set: function(target, property, value, receiver){
+                    if(property === "Value"){
+                        target._value = value;
+                        return true;
+                    }
+                    else{
+                        target[property] = value;
+                        return true;
+                    }
+                }
+            });
             const Factory = new Events.Factory();
             this.addEventListeners = this.addListeners = this.on = Factory.addEventListeners;
             this.removeEventListeners = this.removeListeners = Factory.removeEventListeners;
