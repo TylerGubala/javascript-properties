@@ -5,8 +5,8 @@
             this._value = value;
             
             const Factory = new Events.Factory();
-            this.addEventListeners = this.addListeners = this.on = Factory.addEventListeners;
-            this.removeEventListeners = this.removeListeners = Factory.removeEventListeners;
+            this.addEventListener = this.addListener = this.on = Factory.addEventListener;
+            this.removeEventListener = this.removeListener = Factory.removeEventListener;
             this.once = Factory.once;
             this.dispatchEvent = this.emit = Factory.dispatchEvent;
         }
